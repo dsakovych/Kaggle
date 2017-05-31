@@ -1,4 +1,4 @@
-__author__      = "Dima S."
+__author__ = 'Dima S.'
 
 import os
 from string import punctuation
@@ -32,8 +32,8 @@ build_manager_df = pd.read_csv(BUILD_MANAGER_FEATURE)
 train_ids = train_df[['listing_id', 'interest_level']]
 test_ids = test_df['listing_id']
 
-EncodeCategoricalFeatures = True
-DATA_IS_READY = False
+EncodeCategoricalFeatures = False
+DATA_IS_READY = True
 LEAVE_SELECTED_FEATURES = False
 ########################################################################################################
 ########################################################################################################
@@ -68,7 +68,7 @@ def runXGB(train_X, train_y, test_X, test_y=None, seed_val=221, num_rounds=10000
         xgtest = xgb.DMatrix(test_X, label=test_y)
         evals = [(xgtrain, 'train'), (xgtest, 'test')]
         model = xgb.train(params=params, dtrain=xgtrain, num_boost_round=num_rounds,
-                          evals=evals, early_stopping_rounds=50)
+                          evals=evals, early_stopping_rounds=20)
     else:
         xgtest = xgb.DMatrix(test_X)
         model = xgb.train(params=params, dtrain=xgtrain, num_boost_round=num_rounds)
@@ -455,9 +455,6 @@ if __name__ == '__main__':
             features = file.read().splitlines()
             train_df_new = train_df_new[features + ['interest_level']]
             test_df_new = test_df_new[features]
-    else:
-        train_df_new = train_df_new.drop(labels=['time_stamp', 'latitude', 'longitude'], axis=1)
-        test_df_new = test_df_new.drop(labels=['time_stamp', 'latitude', 'longitude'], axis=1)
 
     X = train_df_new.drop(labels=['listing_id', 'interest_level'], axis=1)
     y = train_df_new['interest_level']
@@ -465,7 +462,7 @@ if __name__ == '__main__':
 
     cv_scores = []
     models = []
-    skf = StratifiedKFold(n_splits=4, shuffle=True)
+    skf = StratifiedKFold(n_splits=5, shuffle=True)
 
     for train_index, test_index in skf.split(X, y):
         print("TRAIN:", len(train_index), "TEST:", len(test_index))

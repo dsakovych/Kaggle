@@ -1,0 +1,67 @@
+bathrooms
+bedrooms
+building_level_high
+building_level_low
+building_level_medium
+latitude
+listing_id
+longitude
+manager_level_high
+manager_level_low
+manager_level_medium
+price
+time_stamp
+img_days_passed
+img_date_month
+img_date_week
+img_date_day
+img_date_dayofweek
+img_date_dayofyear
+img_date_hour
+img_date_monthBeginMidEnd
+Unnamed: 0
+building_id_mean_medium
+building_id_mean_high
+manager_id_mean_medium
+manager_id_mean_high
+logprice
+price_t
+room_sum
+price_per_room
+density
+created_year
+created_month
+created_day
+created_hour
+num_photos
+num_features
+num_description_words
+building_id_present
+manager_count
+building_count
+feature_elevator
+feature_hardwood
+feature_doorman
+feature_dishwasher
+feature_no fee
+feature_reduced feelaundry
+feature_fitness
+feature_cat
+feature_dog
+feature_roof
+feature_outdoor space
+feature_dining
+feature_internet
+feature_balcon
+feature_pool
+feature_new construction
+feature_terrace
+feature_exclusive
+feature_loft
+feature_garden
+feature_wheelchair
+feature_fireplace
+feature_garage
+feature_furnished
+feature_multi-level
+feature_prewar
